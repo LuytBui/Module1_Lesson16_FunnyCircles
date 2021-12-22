@@ -35,19 +35,21 @@ class Circle {
     _x;
     _y;
     _radius;
+    context;
 
-    constructor(x, y, radius, color) {
+    constructor(x, y, radius, color, context) {
         this._x = x;
         this._y = y;
         this._radius = radius;
-        this._color = color;
+        this._color = color
+        this.context = context;
     }
 
     draw() {
-        context.beginPath();
-        context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-        context.fillStyle = this.color;
-        context.fill();
+        this.context.beginPath();
+        this.context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        this.context.fillStyle = this.color;
+        this.context.fill();
     }
 
     jump() {
@@ -56,4 +58,12 @@ class Circle {
         this.color = randomColor();
         this.draw();
     }
+}
+
+function newRandomCircle(canvas, context){
+    let randomX = Math.random() * canvas.width;
+    let randomY = Math.random() * canvas.height;
+    let randomRadius = 20+ Math.random() * 50;
+    let circle = new Circle(randomX, randomY,randomRadius, randomColor(), context);
+    circle.draw();
 }

@@ -3,20 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Funny Circle</title>
+    <style>
+        table{
+            width:600px;
+        }
+        #circleCount{
+            width:150;
+            text-align: right;
+            padding-right: 50px ;
+        }
+    </style>
 </head>
 <body>
-<h3>Click on Canvas!</h3>
+<table><tr><td><h3>Click on Canvas!</h3></td> <td><p id="circleCount">Circles: 0</p></td></tr></table>
+
 <canvas id="myCanvas" width="600" height="400px" style="border:1px solid #d3d3d3;"></canvas>
 
 <script src="Canvas.js"></script>
 <script src="Circle.js"></script>
 <script>
     let canvas = document.getElementById('myCanvas');
-    let circle = new Circle(25, canvas.height/2, 50, randomColor());
     let context = canvas.getContext('2d');
+
+    let circleCount = 0;
     canvas.addEventListener('click', function () {
-        circle.jump();
+        newRandomCircle(canvas, context);
+        circleCount++;
+        document.getElementById('circleCount').innerText = `Circles: ${circleCount}`;
     }, false);
+
+    window.setInterval(checkForCircleCount, 1000);
+
+    function checkForCircleCount() {
+        if (circleCount > 20) {
+            clearCanvas(context);
+            circleCount = 0;
+        }
+    }
 
 </script>
 </body>
