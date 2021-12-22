@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <title>Funny Circle</title>
     <style>
-        table{
-            width:600px;
+        table {
+            width: 600px;
         }
-        #circleCount{
-            width:150;
+
+        #circleCount {
+            width: 150;
             text-align: right;
-            padding-right: 50px ;
+            padding-right: 50px;
         }
     </style>
 </head>
 <body>
-<table><tr><td><h3>Click on Canvas!</h3></td> <td><p id="circleCount">Circles: 0</p></td></tr></table>
+<table>
+    <tr>
+        <td><h3>Click on Canvas!</h3></td>
+        <td><p id="circleCount">Circles: 0</p></td>
+    </tr>
+</table>
 
 <canvas id="myCanvas" width="600" height="400px" style="border:1px solid #d3d3d3;"></canvas>
 
@@ -36,8 +42,9 @@
 
     function checkForCircleCount() {
         if (circleCount > 20) {
-            clearCanvas(context);
+            clearCanvas(canvas, context);
             circleCount = 0;
+            document.getElementById('circleCount').innerText = `Circles: ${circleCount}`;
         }
     }
 
