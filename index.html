@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funny Circle</title>
+</head>
+<body>
+<h3>Click on Canvas!</h3>
+<canvas id="myCanvas" width="600" height="400px" style="border:1px solid #d3d3d3;"></canvas>
+
+<script src="Canvas.js"></script>
+<script src="Circle.js"></script>
+<script>
+    let canvas = document.getElementById('myCanvas');
+    let circle = new Circle(25, canvas.height/2, 50, randomColor());
+    let context = canvas.getContext('2d');
+    canvas.addEventListener('click', function () {
+        circle.jump();
+    }, false);
+
+</script>
+</body>
+</html>
